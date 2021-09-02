@@ -25,7 +25,7 @@ Collaborate closely with students from other programs as well as industry leader
 - What is the field you most want to improve?
   creativity
   computer graph
-##### 个人计划
+##### 个人计划s
 
 - What are your professional plans upon completing your Cornell Tech degree? (please be as specific as possible - e.g., if you're planning on starting a company or  joining an existing one, please describe your aspirations)
   movie -> laptop -> video editor -> adobe -> start up business 

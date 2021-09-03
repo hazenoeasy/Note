@@ -18,11 +18,11 @@
 # Security Mechanisms
 
 ## Confidentially   Integrity   Availability
-1. Confidentiality is prevention of unauthorized disclosure of information.
+1. Confidentiality is prevention of unauthorized disclosure of information. --read only no modify
 
-2. Integrity is prevention of unauthorized modification of information.
+2. Integrity is prevention of unauthorized modification of information. -- modify
 
-3. Availability is ability to withstand unauthorized withholding of information or resources.
+3. Availability is ability to withstand unauthorized withholding of information or resources. -- stop
 
 # Security Policy
     If we consider a computer system to be a finite state automaton with state transitions then

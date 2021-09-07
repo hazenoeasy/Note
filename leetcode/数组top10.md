@@ -20,6 +20,8 @@ ArrayList<ArrayList<Integer>> cannot be converted to List<List<Integer>> ？？
 ArrayList<T>是List<T>的子类
 但T变了 不能算继承了
 
+
+
 46. 全排列 https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
 ## 解决方法：
     回溯
@@ -34,6 +36,8 @@ ArrayList<T>是List<T>的子类
 - ArrayList初始化 可以在括号中添加一个集合
 - Deque
 
+
+
 215. 数组中的第k个最大元素
 ## 方法1：
     随机快速排序+ 快速选择
@@ -44,6 +48,8 @@ ArrayList<T>是List<T>的子类
     堆排序
 ## 为什么用堆排序？ 
     堆排序可以依次知道最大值 https://www.pdai.tech/md/algorithm/alg-sort-x-heap.html#%E5%A0%86%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0
+
+
 
 200. 岛屿数量
 ## 方法1 深度遍历
@@ -132,6 +138,9 @@ class Solution {
 广度优先 需要注意维护栈
 ## 方法3 
     并查集 https://leetcode-cn.com/problems/number-of-islands/solution/dao-yu-shu-liang-by-leetcode/
+
+
+
 11. 盛最多水
 ## 方法1
     双指针+贪心算法
@@ -154,6 +163,9 @@ class Solution {
     }
 }
 ```
+
+
+
 54. 螺旋矩阵
 ## 方法 
     模拟
@@ -184,7 +196,13 @@ class Solution {
     }
 }
 ```
+
+
+
 56. 合并区间
+
+
+
 
 912. 排序数组
 ## 方法1： 快速排序
@@ -231,7 +249,7 @@ class Solution {
     堆排序
 ## 方法3
     归并排序
-56. 合并区间
+1.  合并区间
 ##  方法1 排序+合并
 - Java sort用法comparator
     可以实现comparator接口 来实现排序方法       comparator返回 正负
@@ -275,7 +293,27 @@ List变为数组 可以用 toArray();
 return res.toArray(new int[res.size()][]);   
 ``
 
+
+
 739. 每日温度
-     
+## 方法 单调栈
+```
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int length = temperatures.length;
+        int[] ans = new int[length];
+        Deque<Integer> stack = new LinkedList<Integer>();
+        for (int i = 0; i < length; i++) {
+            int temperature = temperatures[i];
+            while (!stack.isEmpty() && temperature > temperatures[stack.peek()]) {
+                int prevIndex = stack.pop();
+                ans[prevIndex] = i - prevIndex;
+            }
+            stack.push(i);
+        }
+        return ans;
+    }
+}
+```
 740. 最接近的三个数之和
      

@@ -86,3 +86,11 @@ git cherry-pick 4c805e2  把bug提交的修改‘复制’到当前分支，避�
 推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：
 
 但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push：
+
+
+git pull / git fetch
+
+fetch doesnt change local file.
+
+pull will make local file up to date.
+

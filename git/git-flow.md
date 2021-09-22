@@ -6,3 +6,4 @@ git-flow 模式会预设两个主分支在仓库中：
 * <strong>feature/rss-feed</strong> 开发一个新功能 “rss-feed”
 
 * <strong>hotfix/missing-link</strong> 修复release（master）上问题
+* 

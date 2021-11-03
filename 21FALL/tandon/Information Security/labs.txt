@@ -1,0 +1,4 @@
+
+Software as a Service
+    software is hosted centrally – usually in the cloud – and accessed using either a lightweight client or a web browser. 
+    

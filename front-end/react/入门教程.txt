@@ -1,0 +1,59 @@
+React
+    是声明式，高效且灵活的用于构建用户界面的Js库，将间断，独立的代码片段组合成UI界面
+
+React.Component 子类
+    class ShoppingList extends React.Component {
+      render() {
+        return (
+          <div className="shopping-list">
+            <h1>Shopping List for {this.props.name}</h1>
+            <ul>
+              <li>Instagram</li>
+              <li>WhatsApp</li>
+              <li>Oculus</li>
+            </ul>
+          </div>
+        );
+      }
+    }
+
+    组件-->接收参数-->render
+    render method returns a description of what i want to see on the screen.
+    React takes the description and displays.
+
+2.JSX
+    const element = <h1>hello world</h1>;
+    目的 组件化 分离
+    
+    jsx 中 遵守小驼峰camelCase, class => className, tabindex->tabIndex,
+
+    JSX 标签里能够包含很多子元素:
+    const element = (
+      <div>
+        <h1>Hello!</h1>
+        <h2>Good to see you here.</h2>
+      </div>
+    );
+
+    react dom 在渲染所有输入内容前，默认会进行转义，确保不会发生XSS
+    jsx element  会被babel自动转化为element = React.createElement(...)
+3. 元素渲染
+    元素是构成React应用的最小砖块。
+    const element = <h1>hello world</h1>
+    Dom节点为<div id="root"></div>
+    ReactDom.render(element,container) element 元素 container document.getElementbyId("root");
+
+    React元素不可变对象，更新UI需要创建新的元素，传入ReactDom.render();
+
+4. 组件 & props
+  组件 类似 js函数 ，接收参数props 返回react element
+
+  自定义组件:
+    const element = <Welcome name="Sara">
+    <==> const element = Welcome(props);
+          function Welcome(props){
+            return <h1>Hello,{props.name}</h1>;
+          }
+  组件必须大写字母开头，小写字母为原生Dom 标签
+  组件可以在其输出中引用其他组件。让我们用同一组件来抽象出任意层次的细节。
+  props readonly

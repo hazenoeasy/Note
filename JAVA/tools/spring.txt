@@ -11,4 +11,39 @@ Spring 是软件设计层面的框架 没有具体应用场景
     -- 解耦合 容器创建 容器注入
 
 如何使用
-    创建Maven工程
+    创建Maven工程 添加依赖 spring-context
+    创建实体类 (student)
+    传统-手动 new student
+    Ioc创建-写清单 需要创建什么东西,在配置文件中添加需要管理的对象 xml格式
+    需要有默认的无参构造  property name value
+    
+    有参构造 constructor-arg name value
+
+IoC DI Dependence Injection bean 之间的联系 用ref注入
+
+Spring 中的 bean
+    bean  根据scope生成，表示bean的作用域
+        singleton 单例模式，表示通过Spring容器获取的对象是唯一的 只要加载ioc容器 就会创建bean 以后不会再创建
+        prototype 原型，通过spring容器获取的对象是不同的 每调用一次 就产生一个object
+        request 请求，表示在一次http请求内有效
+        session 绘画，表示在一个用户会话内有效
+
+Spring 中的继承
+    和java不同，  spring继承针对于bean，继承父类的值（string） 还可以改值
+Sprng 依赖
+    设置两个bean的创建顺序
+
+Spring  读区外部资源
+    实际开发中，数据库的配置一般会单独保存到properites文件中，如果使用spring来加载数据源，需要在spring.xml中读取文件
+
+Spring p 命名空间
+    简化配置 需要加 xmlns:p="http://www.springframework.org/schema/p" 引用用classes-ref
+Spring 工厂方法
+    Ioc通过工厂模式创建bean
+        静态工厂方法
+            创建类
+            创建静态工厂类，静态工厂方法 不用实例化
+        实例工厂方法
+            创建类 
+            创建方法
+            创建两个bean  对象用factory-bean指从哪里创建 factor-method指用什么方法创建1 

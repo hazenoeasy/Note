@@ -1,0 +1,45 @@
+11.乘最多水的容器
+    贪心+双指针  每次都 差中找最强的
+
+15. 三数之和
+## 解决方法： 
+    先排序 再前后指针 再去重
+## 为什么排序？ 
+    要找所有的
+## 为什么双指针？ 
+    一个递增 一个递减 就可以双指针
+## 语法注意点：
+```
+ans.add(Arrays.asList(nums[i],nums[L],nums[R]));
+```
+为list添加一个list元素 可以选用 Array.asList 将元素转化为list
+```
+List<List<Integer>> ans = new ArrayList<List<Integer>>();
+List<List<Integer>> ans = new ArrayList<>();(自动匹配)
+List<List<Integer>> ans = new ArrayList<ArrayList<Integer>>();
+ArrayList<ArrayList<Integer>> cannot be converted to List<List<Integer>> ？？
+```
+二维list的声明方式
+ArrayList<T>是List<T>的子类
+但T变了 不能算继承了
+
+18 四数之和
+    需要排重 需要注意边界 适合作为细节练手题。
+42.接雨水
+
+16.最接近的三个数之和
+    先排序 再双指针 跟三数之和很像.
+881 救生艇 
+    先排序 再双指针
+31.下一个排列
+    需要关注 单调增子序列 突变点 同事注意边界 很重要。 
+611.有效三角形个数
+    双指针 但不是收尾指针 是同向指针
+    而且双指针问题 需要找一个不等式  本题 a+b>c a是最小数，b是中间大，c是最大。
+    双指针问题 需要注意方向，以及如何减少计算量。
+922 k个不同整数的子数组
+
+978 最长湍流子数组
+
+leetcode做到了滑动3 后面还有两个专题
+

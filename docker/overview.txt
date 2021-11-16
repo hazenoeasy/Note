@@ -1,0 +1,27 @@
+Docker architecture
+    client-server architecture.
+    client talks to the Docker Daemon.
+    can connect a docker client to a remote docker daemon
+
+    The Docker daemon
+        The Docker daemon (dockerd) listens for Docker API requests and
+        manages Docker objects such as images, containers, networks, and volumes.
+        A daemon can also communicate with other daemons to manage Docker services.
+    
+    Client 
+        client sends commands to dockerd, could communicate with more than one daemon.
+    
+    Docker Registries
+        Stores Docker images. Could be Docker Hub or private registry.
+    
+    Images
+        Readonly template with instructions for creating a Docker containers
+    
+    containers
+        A containers is a runnable isntance of an image. Can connect a container to one or more 
+        network, attach storage, create a new image bases on its status.
+
+    * think about what happen when run $ docker run -i -t ubuntu /bin/bash
+
+    when I run a container, Docker creates a set of namespaces for that container.
+

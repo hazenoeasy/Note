@@ -1,0 +1,30 @@
+What is a Container and what problems does it solve?
+    Layer of Images
+    Linux Image Mostly Linux Base Image
+    Application Image
+
+Docker Hub 
+    docker pull xxx:xxx 
+    docker run  xxx:xxx
+        if it contains some layers that previously were downloaded, it would not download them again.
+    docker ps
+        see running containers
+Docker Image
+    the actual package
+        configuration + pkg + start script
+
+Docker VS VM
+    Docker doesn't have kernal, it depends on host kernal;
+    VM has its own kernal.
+Basic Commands
+    docker images
+    docker ps   list of contains
+    docker ps -a all list of contains, included stopped contains
+    docker run -d   -- Run container in background and print container ID
+    docker run -a   -- attach stdin sdout stderr
+    
+    docker stop  contain ID
+    docker start contain ID
+        different containers may run on same port? how? conflict?
+        this is containers port, and it is not binded with real port, which means, this container is unreachable
+        

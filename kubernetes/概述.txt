@@ -1,0 +1,15 @@
+k8s 用于管理容器化的工作负载和服务。
+
+为什么需要Kubernetes？
+    在生产环境中，需要管理运行应用程序的容器，并确保不会停机。
+    K8s满足扩展要求，故障转移，部署模式等。
+K8s 组件
+    部署完kubernetes，拥有完整的集群。
+    worker node run contanierized application
+    worker node host pods that are the components of the application workload.
+    contriol plane manages the worker nodes and the Pods in the cluster. # 控制中心
+
+    etcd 备份
+
+    kube-scheduler allocate node
+    

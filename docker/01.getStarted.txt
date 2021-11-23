@@ -1,3 +1,107 @@
 $ docker run -d -p 80:80 docker/getting-started
     -d run in background / -p port
     
+Build the app's container image 
+    FROM node:12-apline   # the builder start from node:12-alpine image.
+    RUN apk add --no-cache python3 g++ make 
+    WORKDIR /app 
+    COPY .. 
+    RUN yarn install --production
+    CMD["node","src/index.js"]
+
+    $docker build -t getting-started .
+
+    -t flage tages our image.
+    . at end tells that Docker should look for the Dockerfile in the current dictory.
+
+Start an app container:
+    docker run -dp 3000:3000 getting-started 
+
+Replace the old container
+    docker ps 
+    docker stop <the-container-id>
+    docker rm <the-container-id>
+
+Docker Persist the DB
+$ docker run -d ubuntu bash -c "shuf -i 1-1000 -n -o /data.txt && tail -f /dev/null"
+
+    volumes
+
+    volumes provide the ability to connect specific filesystem paths of the container back to the host machine. 
+    we mount the sanme directory across container restarts. we'd see the same files.
+
+Name volumes.
+    docker volume create todo-db 
+    docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started 
+    docker volume inspect xxx
+        [
+        {
+            "CreatedAt": "2021-11-16T21:51:15Z",
+            "Driver": "local",
+            "Labels": {},
+            "Mountpoint": "/var/lib/docker/volumes/demo/_data",
+            "Name": "demo",
+            "Options": {},
+            "Scope": "local"
+        }
+        ]
+
+Bind mounts
+
+Multi container apps
+    each container sohuld do one thing and do it well.
+    put containers in same network, they can talk.
+    2 ways: 
+    1:create a network
+        docker network create todo-list;
+        docker run -d --network todo-app --network-alias mysql 
+        -v todo-mysql-data:/var/lib/mysql 
+        -e MYSQL_ROOT_PASSWORD=secret 
+        -e MYSQL_DATABASE=todos  mysql:5.7
+    docker exec -it <mysql-container-id> mysql -u root -p
+
+    connect to mysql 
+    docker run -it --network todo-app nicolaka/netshoot
+    dig mysql
+        get ip 
+    docker run -dp 3000:3000 \
+    -w /app -v "$(pwd):/app" \
+    --network todo-app \
+    -e MYSQL_HOST=mysql \
+    -e MYSQL_USER=root \
+    -e MYSQL_PASSWORD=secret \
+    -e MYSQL_DB=todos \
+    node:12-alpine \
+    sh -c "yarn install && yarn run dev"
+
+Docker Compose
+    at the root of the app project, create a file named docker-compose.yml
+    version:"x.x"
+    services: list of services/containers
+        app:
+            images:node:12-alpine 
+            command: sh -c "yarn install && yarn run dev"
+            port:
+                - 3000:3000
+            working_dir:/app
+            volumes:
+                - ./:/app 
+            environment:
+                MYSQL_HOST: mysql
+                MYSQL_USER: root
+                MYSQL_PASSWORD: secret
+                MYSQL_DB: todos
+         mysql:
+            image: mysql:5.7
+            volumes:
+            - todo-mysql-data:/var/lib/mysql
+            environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: todos
+
+    volumes:
+    todo-mysql-data:
+
+$ docker-compose up
+$ docker-compose down --volumes
+

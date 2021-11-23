@@ -1,0 +1,21 @@
+Spring 开启了各种自动装备，简化了代码开发，不需要编写各种配置文件，只需要引入相关依赖。
+    不需要web.xml
+    不需要springmvc.xml
+    不需要tomcat, 内嵌了tomcat
+    不需要配置JSON解析， 支持REST架构
+    想象为脚手架
+
+使用
+    创建Maven工程
+    @RestController  返回json类型结果
+    @RequestMapping
+        RequestMapping 有两种标注方式，一种是标注在类级别上，一种是标注在方法级别上。
+        标注在方法上时，value 表示访问该方法的 URL 地址。
+        标注在类上时，value 相当于一个命名空间，即访问该 Controller 下的任意方法都需要带上这个命名空间.
+    配置application 
+        application需要在包的顶级目录下
+
+Spring Boot 数据校验
+
+
+Spring Boot 与 Spring Data MongoDB的整合

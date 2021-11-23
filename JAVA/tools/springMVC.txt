@@ -1,0 +1,39 @@
+SpringMVC 是目前主流的实现MVC设计模式的框架，是Spring框架的一个分支产品， 以IOC容易为基础，利用容器的特性来简化配置。
+SpringMVC相当于Spring的一个子模块。
+MVC是什么
+    DataBase ->Model -> 数据模型
+    View  -> 封装的模型数据(处理数据) -> human
+    human -> Controller(接收请求) -> 调用业务模型   / Handler
+
+Spring MVC 核心组件
+    DispatcherServlet
+        前置控制器，是整个流程控制的核心，控制其他组件的执行，进行统一调度，降低组件之间的耦合性
+    Handler
+        处理器， 完成具体的业务逻辑，相当于Servlet或者Action
+    HandlerMapping
+        DispatcherServlet 接收到请求之后，通过HandlerMapping将不同的请求映射到不同的Handler
+    HandlerInterceptor
+        处理器拦截器，是一个接口，如果需要完成一些拦截处理，可以实现该接口。
+    HandlerExecutionChain
+        处理器执行链，包括两部分内容，Handler和HandlerInterceptor
+    HandlerAdapter
+        处理器适配器，Handler执行业务方法之前，需要进行一系列的操作，包括表单数据的验证，数据类型的转换，将表单数据封装到JavaBean等
+        DispatcherServlet 通过HandlerAdapter 执行不同的Handler
+    ModelAndView
+        装载了模型数据和视图信息，作为Handler的处理结果，返回给DispatcherServlet.
+    ViewResolver
+        视图解析器，DispatchServlet 通过它讲逻辑视图解析为物理视图，最终将渲染结果响应给客户端。
+    
+    请求 ->  DispatcherServlet -> HandlerMapping -> DispatcherServlet( return HandlerExecutionChain);
+            DispatcherServlet -> HandlerAdapter -> Handler > HandlerAdapter -> ModelAndView -> DispatcherServlet;(get ModelAndView);
+            DispatcherServlet -> ViewResolver -> DispatcherServlet; (get real view)
+    客户端请求被DisPatcherServler 接受
+    根据HandlerMapping 映射到Handler
+    生成Handler 和 HandlerInterceptor
+    Handlder 和 HandlerInterceptor 以 HandlerExecutionChain 的形式统一返回给DispatcherServlet
+    DispatcherServlet 通过 HandlerAdapter调用Handler的方法完成业务逻辑处理
+    Handler 返回一个ModelAndView 给 DispatcherServlet
+    DispatcherServlet 将获取的ModelAndView 对象传给ViewResolver 试图解析器，将逻辑视图解析为物理视图.
+    DispatcherServlet 根据View 进行视图渲染，讲模型数据Model填充到视图view中
+    DispatcherServlet 将view返回
+使用
